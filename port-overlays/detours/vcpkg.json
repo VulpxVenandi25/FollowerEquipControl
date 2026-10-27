@@ -1,0 +1,14 @@
+{
+  "name": "detours",
+  "version-date": "2026-10-20",
+  "description": "A software package for monitoring and instrumenting API calls on Windows. Overlay port: builds the library with CMake instead of the upstream NMake makefiles so it can be cross-compiled from Linux.",
+  "homepage": "https://github.com/microsoft/Detours",
+  "license": "MIT",
+  "supports": "windows & !uwp",
+  "dependencies": [
+    {
+      "name": "vcpkg-cmake",
+      "host": true
+    }
+  ]
+}

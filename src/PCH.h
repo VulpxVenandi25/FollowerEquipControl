@@ -6,6 +6,12 @@
 #include <REL/Relocation.h>
 #include <SKSE/SKSE.h>
 
+// Windows headers define GetObject as GetObjectW/A via minwindef.h, which mangles every
+// CommonLibSSE GetObject member call (BGSDefaultObjectManager, InventoryEntryData, ...).
+#ifdef GetObject
+#	undef GetObject
+#endif
+
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/sinks/msvc_sink.h>
 

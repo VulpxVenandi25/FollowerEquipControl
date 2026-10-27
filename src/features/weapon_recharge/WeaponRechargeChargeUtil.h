@@ -84,7 +84,7 @@ namespace FEC::WeaponRecharge::ChargeUtil
 		}
 		if (wornL) {
 			const float left = avOwner->GetActorValue(RE::ActorValue::kLeftItemCharge);
-			cached = (cached < 0.0f) ? left : std::max(cached, left);
+			cached = (cached < 0.0f) ? left : (std::max)(cached, left);
 		}
 
 		if (cached >= 0.0f) {

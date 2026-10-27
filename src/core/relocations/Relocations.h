@@ -10,7 +10,9 @@ namespace FEC::Relocations
 	inline const REL::RelocationID kItemListUpdate{ 50099, 51031 };
 	inline const REL::RelocationID kUpdateNPCOutfit{ 24234, 418622 };
 	inline const REL::RelocationID kContainerMenuAddObjectToContainer{ 50212, 51141 };
+	inline const REL::RelocationID kActorEquipManagerEquipObject{ 37938, 38894 };
 	inline const REL::RelocationID kActorEquipManagerEquipSpell{ 37939, 38895 };
+	inline const REL::RelocationID kActorEquipManagerUnequipObject{ 37945, 38901 };
 	inline const REL::RelocationID kGetInventoryWeight{ 15883, 16123 };
 	inline const REL::RelocationID kInitLeveledItems{ 15889, 16129 };
 	inline const REL::RelocationID kInitOutfitItems{ 15833, 16072 };

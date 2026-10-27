@@ -80,11 +80,8 @@ namespace FEC::CombatEquip::Preference::Policy
 				return Category::kShieldLeft;
 			}
 			// Headgear covers Head, Hair, or Circlet biped slots.
-			const auto slotMask = static_cast<std::uint32_t>(armo->GetSlotMask());
-			constexpr auto kHead = static_cast<std::uint32_t>(RE::BGSBipedObjectForm::BipedObjectSlot::kHead);
-			constexpr auto kHair = static_cast<std::uint32_t>(RE::BGSBipedObjectForm::BipedObjectSlot::kHair);
-			constexpr auto kCirclet = static_cast<std::uint32_t>(RE::BGSBipedObjectForm::BipedObjectSlot::kCirclet);
-			if ((slotMask & (kHead | kHair | kCirclet)) != 0) {
+			using Slot = RE::BGSBipedObjectForm::BipedObjectSlot;
+			if (armo->GetSlotMask().any(Slot::kHead, Slot::kHair, Slot::kCirclet)) {
 				return Category::kHeadgear;
 			}
 		}

@@ -180,7 +180,7 @@ namespace FEC::QuickTrade
 							RE::UI_MESSAGE_TYPE::kShow, nullptr);
 					}
 
-					actor->OpenContainer(3);  // 3 = kNPCMode
+					RE::ContainerMenu::OpenMenu(actor.get(), RE::ContainerMenu::ContainerMode::kNPCMode);
 					logger::info("QuickTrade: opened for {:08X} ({})",
 						actor->GetFormID(), actor->GetName());
 				});

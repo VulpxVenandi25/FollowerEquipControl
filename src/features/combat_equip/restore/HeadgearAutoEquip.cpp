@@ -50,11 +50,8 @@ namespace FEC::HeadgearAutoEquip
 			if (!a_armor) {
 				return false;
 			}
-			const auto mask = static_cast<std::uint32_t>(a_armor->GetSlotMask());
-			constexpr auto kHead = static_cast<std::uint32_t>(RE::BGSBipedObjectForm::BipedObjectSlot::kHead);
-			constexpr auto kHair = static_cast<std::uint32_t>(RE::BGSBipedObjectForm::BipedObjectSlot::kHair);
-			constexpr auto kCirclet = static_cast<std::uint32_t>(RE::BGSBipedObjectForm::BipedObjectSlot::kCirclet);
-			return (mask & (kHead | kHair | kCirclet)) != 0;
+			using Slot = RE::BGSBipedObjectForm::BipedObjectSlot;
+			return a_armor->GetSlotMask().any(Slot::kHead, Slot::kHair, Slot::kCirclet);
 		}
 
 		// Collect distinct worn headgear across Head, Hair, and Circlet slots.

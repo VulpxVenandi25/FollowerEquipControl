@@ -77,6 +77,35 @@
         "ENABLE_SKYRIM_SE": "OFF",
         "ENABLE_SKYRIM_VR": "ON"
       }
+    },
+    {
+      "name": "linux-clangcl",
+      "displayName": "Skyrim SE/AE (Linux cross-compile, clang-cl)",
+      "description": "Cross-compiles a Windows x64 DLL from Linux using clang-cl + lld-link against an xwin MSVC sysroot. Requires VCPKG_ROOT and XWIN_SYSROOT (see skse-toolchain/env.sh).",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/linux-clangcl",
+      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "BUILD_SKYRIM": true,
+        "SKSE_SUPPORT_XBYAK": "ON",
+        "BUILD_TESTS": "OFF",
+        "ENABLE_SKYRIM_AE": "ON",
+        "ENABLE_SKYRIM_SE": "ON",
+        "ENABLE_SKYRIM_VR": "OFF",
+        "COMMONLIB_ENABLE_IPO": "OFF",
+        "VCPKG_TARGET_TRIPLET": "x64-windows-clangcl",
+        "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/extern/CommonLibSSE-NG/examples/linux-cross-compile/custom-triplets",
+        "VCPKG_OVERLAY_PORTS": "${sourceDir}/port-overlays;${sourceDir}/extern/CommonLibSSE-NG/examples/linux-cross-compile/custom-ports",
+        "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/extern/CommonLibSSE-NG/cmake/toolchain-linux-clangcl.cmake"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "linux-clangcl",
+      "configurePreset": "linux-clangcl"
     }
   ]
 }

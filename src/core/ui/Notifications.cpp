@@ -48,7 +48,7 @@ namespace FEC::Notifications
 				return;
 			}
 
-			RE::DebugNotification(a_message.c_str(), a_options.soundToPlay, a_options.cancelIfAlreadyQueued);
+			RE::SendHUDMessage::ShowHUDMessage(a_message.c_str(), a_options.soundToPlay, a_options.cancelIfAlreadyQueued);
 		}
 
 		void SubmitToast(std::string a_message, ToastOptions a_options)

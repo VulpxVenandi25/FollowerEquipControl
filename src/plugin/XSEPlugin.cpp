@@ -45,7 +45,7 @@ namespace
   }
 }
 
-extern "C" DLLEXPORT bool SKSEAPI SKSEPlugin_Load(const SKSE::LoadInterface* a_skse)
+SKSE_PLUGIN_LOAD(const SKSE::LoadInterface* a_skse)
 {
   FEC::Logging::Initialize(spdlog::level::info);
 
@@ -76,19 +76,9 @@ extern "C" DLLEXPORT bool SKSEAPI SKSEPlugin_Load(const SKSE::LoadInterface* a_s
   return true;
 }
 
-extern "C" DLLEXPORT constinit auto SKSEPlugin_Version = []() noexcept {
-  SKSE::PluginVersionData v;
-  v.PluginName(Plugin::NAME.data());
-  v.PluginVersion(Plugin::VERSION);
-  v.UsesAddressLibrary(true);
-  v.HasNoStructUse();
-  return v;
-}();
-
-extern "C" DLLEXPORT bool SKSEAPI SKSEPlugin_Query(const SKSE::QueryInterface*, SKSE::PluginInfo* a_info)
-{
-  a_info->name = SKSEPlugin_Version.pluginName;
-  a_info->infoVersion = SKSE::PluginInfo::kVersion;
-  a_info->version = SKSEPlugin_Version.pluginVersion;
-  return true;
-}
+SKSEPluginInfo(
+  .Version = Plugin::VERSION,
+  .Name = Plugin::NAME,
+  .Author = ""sv,
+  .StructCompatibility = SKSE::StructCompatibility::Independent,
+  .RuntimeCompatibility = SKSE::VersionIndependence::AddressLibrary)

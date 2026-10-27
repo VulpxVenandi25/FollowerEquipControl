@@ -321,7 +321,7 @@ namespace FEC::ActorScope
 
 			{
 				RE::NiPointer<RE::Actor> rider;
-				if (a_actor->GetRider(rider) && rider) {
+				if (a_actor->GetMountedBy(rider) && rider) {
 					const auto cat = ResolveEquipPolicy(rider.get()).category;
 					if (cat != ActorCategory::kOutOfScope && cat != ActorCategory::kCorpse) {
 						return true;

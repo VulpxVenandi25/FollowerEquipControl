@@ -220,7 +220,7 @@ namespace FEC::EquipGate::Hooks
 		if (_installed) {
 			return;
 		}
-		const auto addr = RE::Offset::ActorEquipManager::EquipObject.address();
+		const auto addr = Relocations::kActorEquipManagerEquipObject.address();
 		if (!addr) {
 			if (!_missingAddrLogged) {
 				logger::warn("EquipGate: ActorEquipManager::EquipObject address not found");
@@ -517,7 +517,7 @@ namespace FEC::EquipGate::Hooks
 		if (_installed) {
 			return;
 		}
-		const auto addr = RE::Offset::ActorEquipManager::UnequipObject.address();
+		const auto addr = Relocations::kActorEquipManagerUnequipObject.address();
 		if (!addr) {
 			if (!_missingAddrLogged) {
 				logger::warn("EquipGate: ActorEquipManager::UnequipObject address not found");

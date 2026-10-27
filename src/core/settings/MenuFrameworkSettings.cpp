@@ -3616,14 +3616,12 @@ namespace FEC
 					case RE::ActorValue::kRestoration: return Localization::Get("ui.spell_list.school.restoration");
 					default: break;
 				}
-				if (auto* avl = RE::ActorValueList::GetSingleton()) {
-					if (auto* info = avl->GetActorValue(a_av)) {
-						if (const char* fn = info->GetFullName(); fn && fn[0] != '\0') {
-							return std::string(fn);
-						}
-						if (info->enumName && info->enumName[0] != '\0') {
-							return std::string(info->enumName);
-						}
+				if (auto* info = RE::ActorValueList::GetActorValueInfo(a_av)) {
+					if (const char* fn = info->GetFullName(); fn && fn[0] != '\0') {
+						return std::string(fn);
+					}
+					if (info->enumName && info->enumName[0] != '\0') {
+						return std::string(info->enumName);
 					}
 				}
 				return std::string(Localization::CStr("ui.spell_list.school.other"));
@@ -3831,7 +3829,7 @@ namespace FEC
 					e.name        = a_spell->GetFullName();
 					if (!e.name || e.name[0] == '\0') e.name = "<unnamed>";
 					e.school      = a_spell->GetAssociatedSkill();
-					if (auto* c = a_spell->GetCostliestEffectItem(RE::MagicSystem::Delivery::kTotal, false))
+					if (auto* c = a_spell->GetCostliestEffectItem(RE::MagicSystem::Delivery::kNone, false))
 						if (c->baseEffect) e.tier = c->baseEffect->GetMinimumSkillLevel();
 					e.casting = false;
 					if (actor) {
@@ -3915,7 +3913,7 @@ namespace FEC
 					e.name        = spell->GetFullName();
 					if (!e.name || e.name[0] == '\0') e.name = "<unnamed>";
 					e.school      = spell->GetAssociatedSkill();
-					if (auto* c = spell->GetCostliestEffectItem(RE::MagicSystem::Delivery::kTotal, false))
+					if (auto* c = spell->GetCostliestEffectItem(RE::MagicSystem::Delivery::kNone, false))
 						if (c->baseEffect) e.tier = c->baseEffect->GetMinimumSkillLevel();
 					e.casting     = false;
 					e.suppressed  = true;

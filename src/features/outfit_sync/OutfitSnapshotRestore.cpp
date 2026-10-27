@@ -361,7 +361,7 @@ namespace FEC
 					continue;
 				}
 				const auto baseID = obj->GetFormID();
-				const auto mask = static_cast<std::uint32_t>(armo->GetSlotMask());
+				const auto mask = armo->GetSlotMask().underlying();
 				if (mask == 0) {
 					continue;
 				}
@@ -596,7 +596,7 @@ namespace FEC
 		if (objectID == 0) {
 			return;
 		}
-		const auto mask = static_cast<std::uint32_t>(armo->GetSlotMask());
+		const auto mask = armo->GetSlotMask().underlying();
 		if (mask == 0) {
 			return;
 		}
@@ -636,7 +636,7 @@ namespace FEC
 			if (!dispArmo) {
 				continue;
 			}
-			const auto dispMask = static_cast<std::uint32_t>(dispArmo->GetSlotMask());
+			const auto dispMask = dispArmo->GetSlotMask().underlying();
 			ForEachSlotBit(dispMask, [&](std::uint32_t bit) {
 				auto it = state.armorBySlot.find(bit);
 				if (it != state.armorBySlot.end() && it->second.baseObjectID == dispID) {
@@ -676,7 +676,7 @@ namespace FEC
 		if (!armo) {
 			return;
 		}
-		const auto mask = static_cast<std::uint32_t>(armo->GetSlotMask());
+		const auto mask = armo->GetSlotMask().underlying();
 		if (mask == 0) {
 			return;
 		}

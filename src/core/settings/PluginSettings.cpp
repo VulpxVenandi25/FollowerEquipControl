@@ -218,7 +218,7 @@ namespace FEC::PluginSettings
 				if (idx != s.size()) {
 					return fallback;
 				}
-				if (v > std::numeric_limits<std::uint32_t>::max()) {
+				if (v > (std::numeric_limits<std::uint32_t>::max)()) {
 					return fallback;
 				}
 				return static_cast<std::uint32_t>(v);
